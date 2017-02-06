@@ -274,6 +274,171 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="blog.jiangbo.work/2017/02/06/Cmake的魅力/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="jiangbo">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/linux.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="读.阅.思">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="读.阅.思" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/06/Cmake的魅力/" itemprop="url">
+                  Cmake的魅力
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-06T14:59:26+08:00">
+                2017-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cmake/" itemprop="url" rel="index">
+                    <span itemprop="name">cmake</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/02/06/Cmake的魅力/" class="leancloud_visitors" data-flag-title="Cmake的魅力">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h2><blockquote>
+<p>对于大工程来说，Cmake的重量级别与作用显得尤为必要。<br>要使用Cmake，也很简单，遵循几个关键的语法段即可。</p>
+<p>a. <strong>想了解更多的戳这里<a href="https://cmake.org/cmake/help/v3.0/manual/cmake-language.7.html#syntax" target="_blank" rel="external">cmake 语法[官方]</a></strong><br>b. <a href="https://www.jetbrains.com/help/clion/2016.3/quick-cmake-tutorial.html" target="_blank" rel="external">更为人性的文档Cmake</a>  </p>
+</blockquote>
+<p>在使用的工程里创建Cmakelists.txt，需要编译的文件按照cmake约定的语法添加目标文件。</p>
+<p>以下为cmake<strong>关键字段</strong></p>
+<h2 id="project"><a href="#project" class="headerlink" title="project "></a><strong>project </strong></h2><pre><code>project(Target Name)  #target name定义借鉴工程意义
+</code></pre><h2 id="set"><a href="#set" class="headerlink" title="set"></a><strong>set</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">	set(target var   source var ) # 将source 变量放入target 中  </div><div class="line">	# source 变量可包含文件、路径、消息、编译工具链、编译选项等</div><div class="line">eg1. </div><div class="line">	 set(CMAKE_CXX_STANDARD  11) # enable C++11 </div><div class="line">eg2</div><div class="line">	 set(message  &quot; Here should add someting &quot;)</div><div class="line">eg3 </div><div class="line">	 set(SELF_TEST_DIR  $&#123;CATCH_DIR&#125;/projects/SelfTest)</div></pre></td></tr></table></figure>
+<h2 id="add-executable"><a href="#add-executable" class="headerlink" title="add_executable"></a><strong>add_executable</strong></h2><pre><code>add_excutable(bin name  source file ) # 根据source file 生成目标可执行文件
+</code></pre><h2 id="add-library"><a href="#add-library" class="headerlink" title="add_library"></a><strong>add_library</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">add_library (my_library STATIC|SHARED|MODULE $&#123;SOURCE_FILES&#125;)</div><div class="line"></div><div class="line">to build  a library </div><div class="line">- static :   bulid static library   (*.a)</div><div class="line">- shared:  build share library (*.so)</div><div class="line">- module:  build  plugin library ,  it can be load dynamicall at runningtime</div></pre></td></tr></table></figure>
+<h2 id="target-link-libraries"><a href="#target-link-libraries" class="headerlink" title="target_link_libraries"></a><strong>target_link_libraries</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">target_link_libraies(target   libname) #目标文件需要依赖于libname 的库</div></pre></td></tr></table></figure>
+<h2 id="target-compile-options"><a href="#target-compile-options" class="headerlink" title="target_compile_options"></a><strong>target_compile_options</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">target_compile_options( target file or bin   MODE -Wall -Wextra )</div><div class="line"></div><div class="line">MODE有以下区分，其中差异见以下，个人理解为，所取公共环境变量的依赖关系不一样。</div><div class="line">- private : </div><div class="line">- public :</div><div class="line">- interface :</div></pre></td></tr></table></figure>
+<p>以上差异有两种<br><a href="https://cmake.org/cmake/help/v3.1/prop_tgt/COMPILE_DEFINITIONS.html#prop_tgt:COMPILE_DEFINITIONS" target="_blank" rel="external">差异1</a>  vs  <a href="https://cmake.org/cmake/help/v3.1/prop_tgt/INTERFACE_COMPILE_DEFINITIONS.html#prop_tgt:INTERFACE_COMPILE_DEFINITIONS" target="_blank" rel="external">差异2</a> </p>
+<h2 id="function"><a href="#function" class="headerlink" title="function"></a><strong>function</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">	主要格式 如下</div><div class="line">	function()</div><div class="line">	..... #实现内部特定工作</div><div class="line">	endfunction </div><div class="line">	</div><div class="line">eg:</div><div class="line">	function(CheckFileList LIST_VAR FOLDER)</div><div class="line">  set(MESSAGE &quot; should be added to the variable $&#123;LIST_VAR&#125;&quot;)</div><div class="line">  set(MESSAGE &quot;$&#123;MESSAGE&#125; in $&#123;CMAKE_CURRENT_LIST_FILE&#125;\n&quot;)</div><div class="line">  file(GLOB GLOBBED_LIST &quot;$&#123;FOLDER&#125;/*.cpp&quot;</div><div class="line">                         &quot;$&#123;FOLDER&#125;/*.hpp&quot;</div><div class="line">                         &quot;$&#123;FOLDER&#125;/*.h&quot;)</div><div class="line">  list(REMOVE_ITEM GLOBBED_LIST $&#123;$&#123;LIST_VAR&#125;&#125;)</div><div class="line">  foreach(EXTRA_ITEM $&#123;GLOBBED_LIST&#125;)</div><div class="line">    string(REPLACE &quot;$&#123;CATCH_DIR&#125;/&quot; &quot;&quot; RELATIVE_FILE_NAME &quot;$&#123;EXTRA_ITEM&#125;&quot;)</div><div class="line">    message(AUTHOR_WARNING &quot;The file \&quot;$&#123;RELATIVE_FILE_NAME&#125;\&quot;$&#123;MESSAGE&#125;&quot;)</div><div class="line">  endforeach()</div><div class="line">endfunction()</div></pre></td></tr></table></figure>
+<h2 id="include-directories"><a href="#include-directories" class="headerlink" title="include_directories"></a><strong>include_directories</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">include_directories(head file path) # 包含头文件目录</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="blog.jiangbo.work/2017/02/04/产品书单/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -903,7 +1068,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -912,7 +1077,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -921,7 +1086,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
