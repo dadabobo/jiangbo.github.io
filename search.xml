@@ -4,6 +4,54 @@
   
     
     <entry>
+      <title><![CDATA[智能测试]]></title>
+      <url>blog.jiangbo.work/2017/02/10/%E6%99%BA%E8%83%BD%E6%B5%8B%E8%AF%95/</url>
+      <content type="html"><![CDATA[<h2 id="智能"><a href="#智能" class="headerlink" title="智能"></a>智能</h2><blockquote>
+<p><strong>何为智能?</strong></p>
+<p>所谓智能：　即是可以高效完成一些有挑战的事情．</p>
+<p><strong>如何实现智能?</strong>    </p>
+<p>这一问题放在后面回答．
+ 　　　　</p>
+<p># </p>
+<h3 id="测试类型"><a href="#测试类型" class="headerlink" title="测试类型"></a>测试类型</h3><p>回归到测试初衷，验证功能稳定＆可靠性、及时发现功能缺陷性<br>基于测试目的与操作手法，可分为以下几大类测试</p>
+</blockquote>
+<h4 id="一、回归测试"><a href="#一、回归测试" class="headerlink" title="一、回归测试"></a>一、回归测试</h4><p>每一次软件的迭代及优化都有可能带来不可预料的后果，为了验证迭代及优化的可靠性进行的测试称为回归测试<br>回归测试属于软件生命周期组成部分，其在整个软件测试占据着很大任务量。<br>回归测试的<strong>重点</strong>：验证新添加/改动部分功能的可靠性</p>
+<h4 id="二、压力测试"><a href="#二、压力测试" class="headerlink" title="二、压力测试"></a>二、压力测试</h4><p>在接近软件正常运行极限范围里，重复的执行高负载测试，以用来<br>了解软件性能瓶颈，可靠性<br>压力测试<strong>重点</strong>:　灵活的控制负载量，通过立体式的测试，以得到软件＆系统性能极限值</p>
+<h4 id="三、性能测试"><a href="#三、性能测试" class="headerlink" title="三、性能测试"></a>三、性能测试</h4><p>通过各项的压力测试可得到软件、系统性能指标，压力(负载)测试属于性能测试</p>
+<h4 id="四、安全测试"><a href="#四、安全测试" class="headerlink" title="四、安全测试　"></a>四、安全测试　</h4><p>安全的范围很广，这里取<strong>涉及到软件相关的私密性数据</strong>为基准点<br>测试方法通常有以下几大类：</p>
+<ul>
+<li>Discovery(辨别):　使用工具在软件、系统使用的场景辨别出潜在的漏洞</li>
+<li>Penetration Test(渗透测试):  通过伪装攻击系统、软件找到漏洞，利用漏洞获取私密性数据，这也是也是很多黑客常用的手段来入侵系统</li>
+<li>Security Review：确保核心安全防护的措施、标准已在系统、产品得到应用，通过强大的数据分析复查系统、产品安全性，有必要时重新加固、重构系统、产品的安全防护盾</li>
+</ul>
+<h4 id="五、缺陷追踪测试"><a href="#五、缺陷追踪测试" class="headerlink" title="五、缺陷追踪测试"></a>五、缺陷追踪测试</h4><p>为了便于缺陷的追踪，前期需要建立完整缺陷发生时现场细节数据记录<br>现在一般都会有专门的系统记录系统、软件缺陷bug(如Jira、Matinst)<br>为了提高测试效率，缺陷现场细节记录的完整性(问题复习时的行为、log、截图等)<br>尤为必要</p>
+<h4 id="六、自动化测试"><a href="#六、自动化测试" class="headerlink" title="六、自动化测试"></a>六、自动化测试</h4><p>一些需要通过不断重复完成的测试，都可以用来交给自动化<br>这里需要明确一个概念：不是所有的自动化都等于高效率<br>因为，自动化的背后需要完成大量的测试边界条件功能开发(即测试用例开发)</p>
+<hr>
+<p><strong>回到前面提到的问题，如何实现智能测试?</strong></p>
+<ul>
+<li>从智能完整定义出发，我们可能永远无法实现这一目标</li>
+<li>因为，无法避免要通过大量人力笨拙的通过手动来完成对系统、软件功能验证</li>
+</ul>
+<p>所以，这里的<strong>智能</strong>实现是在传统的测试有效改善上<br>比较有名气的，轻量级的C++自动化单元测试－－ <a href="https://github.com/philsquared/Catch" target="_blank" rel="external">Catch</a> </p>
+<p>它的轻量级轻到，只需要在测试用例中添加一个头文件即可干活<br>有了它，你的软件测试框架可以全部focus到测试用例的开发上<br>只需要你的测试边界条件考虑够全，<strong><a href="https://github.com/philsquared/Catch" target="_blank" rel="external">Catch</a> </strong>就可以帮你完成各种边界测试</p>
+<h3 id="Catch-优点"><a href="#Catch-优点" class="headerlink" title="Catch 优点"></a><a href="https://github.com/philsquared/Catch" target="_blank" rel="external">Catch</a> 优点</h3><ul>
+<li><p>Really easy to get started , Just Download <a href="https://github.com/philsquared/Catch.git" target="_blank" rel="external">it</a> </p>
+</li>
+<li><p>Use BDD-style Given-When-Then sections as well as traditional unit test cases. (这一点特别适合测试有着多情景的接口)</p>
+</li>
+<li><p>Tests can be tagged for easily running ad-hoc groups of tests. (可通过设置特定的tag，测试时通过tag来限定只测试指定单元(或者称case)</p>
+</li>
+<li><p>Output is through modular reporter objects. Basic textual and XML reporters are included. Custom reporters can easily be added.(通常测试报告是个头疼问题，在这里只有苏爽，可以通过-r 定制输出的测试报告)</p>
+</li>
+<li><p>… 等等(See <a href="https://github.com/philsquared/Catch/blob/master/docs/why-catch.md" target="_blank" rel="external">Here</a>)</p>
+</li>
+</ul>
+<hr>
+<h5 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h5><p><a href="http://baike.baidu.com/link?url=Db_qRumQ4NY8yw2BTbo1-cpVM5GJZud6jDn8wPfYI8hkYNc4m98lJSLf0SJGB1ycSeNxtxFMVC5CPiMR8qOGdbQiAywQqoPkFL6p73jYDkRNPm_x4kOm9zQQuXT73_Jt" target="_blank" rel="external">回归测试</a><br><a href="https://smartbear.com/learn/automated-testing/what-is-regression-testing/" target="_blank" rel="external">回归测试２</a><br><a href="http://doc.mbalib.com/view/9504f25daa0549be95d9f4407fe3d706.html" target="_blank" rel="external">软件可行性测试</a><br><a href="http://baike.baidu.com/link?url=K0K-CwqioZdVd5_7RVC8mR49A1SmAabJBscDC3GlxY879Ay0kXdrNb5_CddV2GccjzHW_cGokI4-Y7sLvAm9V70pWNM-hI7aj5dRbNimHmP8caMc0vBNK6M1fv3l0SYn" target="_blank" rel="external">性能测试</a><br><a href="http://baike.baidu.com/link?url=K0K-CwqioZdVd5_7RVC8mR49A1SmAabJBscDC3GlxY879Ay0kXdrNb5_CddV2GccjzHW_cGokI4-Y7sLvAm9V70pWNM-hI7aj5dRbNimHmP8caMc0vBNK6M1fv3l0SYn" target="_blank" rel="external">Security Testing</a><br><a href="https://en.wikipedia.org/wiki/Penetration_test" target="_blank" rel="external">Penetration Test(渗透测试)</a><br><a href="https://en.wikipedia.org/wiki/Bug_tracking_system" target="_blank" rel="external">Bug Tracking </a> </p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Cmake的魅力]]></title>
       <url>blog.jiangbo.work/2017/02/06/Cmake%E7%9A%84%E9%AD%85%E5%8A%9B/</url>
       <content type="html"><![CDATA[<h2 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h2><blockquote>
